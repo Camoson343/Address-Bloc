@@ -8,7 +8,7 @@ require_relative 'entry'
      end
 
 
-   def add_entry(name, phone_number, email, entry_number)
+   def add_entry(name, phone_number, email)
      # #9
      index = 0
      entries.each do |entry|
@@ -19,6 +19,6 @@ require_relative 'entry'
        index+= 1
      end
      # #11
-     entries.insert(index, Entry.new(name, phone_number, email, entry_number))
+     entries.insert(index, Entry.new(name, phone_number, email))
    end
  end

@@ -11,10 +11,10 @@ class MenuController
 
     puts "Main Menu - #{address_book.entries.count} entries"
     puts "1 - View all entries"
-    puts "2 - View Entry Number n"
-    puts "3 - Create an entry"
-    puts "4 - Search for an entry"
-    puts "5 - Import entries from a CSV"
+    puts "2 - Create an entry"
+    puts "3 - Search for an entry"
+    puts "4 - Import entries from a CSV"
+    puts "5 - View Entry n"
     puts "6 - Exit"
     print "Enter your selection: "
 
@@ -27,19 +27,19 @@ class MenuController
       main_menu
     when 2
       system "clear"
-      view_entry_number
+      create_entry
       main_menu
     when 3
       system "clear"
-      create_entry
+      search_entries
       main_menu
     when 4
       system "clear"
-      search_entries
+      read_csv
       main_menu
     when 5
       system "clear"
-      read_csv
+      entry_n_submenu
       main_menu
     when 6
       puts "Good-bye!"
@@ -64,13 +64,19 @@ end
     puts "End of entries"
   end
 
-  def view_entry_number
-      system "clear"
-      puts "Entry Number: "
-      entry_number = gets.chomp
+  def entry_n_submenu
+      print "Entry number to view: "
+      selection = gets.chomp.to_i
 
-      address_book.view_entry_number(entry_number)
-      system "clear"
+      if selection < @address_book.entries.count
+        puts @address_book.entries[selection]
+        puts "Press enter to return to the main menu"
+        gets.chomp
+        system "clear"
+      else
+        puts "#{selection} is not a valid imput"
+        entry_n_submenu
+      end
   end
 
   def create_entry
@@ -82,10 +88,8 @@ end
     email = gets.chomp
     print "Phone: "
     phone = gets.chomp
-    print "Entry Number: "
-    entry_number = gets.chomp
 
-    address_book. add_entry(name, phone, email, entry_number)
+    address_book. add_entry(name, phone, email)
 
     system "clear"
     puts "New entry created"
