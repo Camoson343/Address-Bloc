@@ -42,7 +42,7 @@ RSpec.describe AddressBook do
 
   describe "#import_from_csv" do
      it "imports the correct number of entries" do
-       book.import_from_csv("entries.csv")
+       book.import_from_csv("entries.csv", "entries_2.csv")
        book_size = book.entries.size
 
        expect(book_size).to eq 5
@@ -51,7 +51,7 @@ RSpec.describe AddressBook do
 
     it "imports the 1st entry" do
       expect(book).to respond_to(:entries)
-      book.import_from_csv("entries.csv")
+      book.import_from_csv("entries.csv", "entries_2.csv")
       # Check the first entry
       entry_one = book.entries[0]
 
@@ -59,7 +59,7 @@ RSpec.describe AddressBook do
     end
 
     it "imports the 2nd entry" do
-      book.import_from_csv("entries.csv")
+      book.import_from_csv("entries.csv", "entries_2.csv")
       # Check the second entry
       entry_two = book.entries[1]
 
@@ -67,7 +67,7 @@ RSpec.describe AddressBook do
     end
 
     it "imports the 3rd entry" do
-      book.import_from_csv("entries.csv")
+      book.import_from_csv("entries.csv", "entries_2.csv")
       # Check the third entry
       entry_three = book.entries[2]
 
@@ -75,7 +75,7 @@ RSpec.describe AddressBook do
     end
 
     it "imports the 4th entry" do
-      book.import_from_csv("entries.csv")
+      book.import_from_csv("entries.csv", "entries_2.csv")
       # Check the fourth entry
       entry_four = book.entries[3]
 
@@ -83,7 +83,7 @@ RSpec.describe AddressBook do
     end
 
     it "imports the 5th entry" do
-      book.import_from_csv("entries.csv")
+      book.import_from_csv("entries.csv", "entries_2.csv")
       # Check the fifth entry
       entry_five = book.entries[4]
 
