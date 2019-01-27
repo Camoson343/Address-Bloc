@@ -40,6 +40,20 @@ require "csv"
      return nil
    end
 
+   def iterative_search(name)
+     i = 0
+
+  while i <= (entries.length - 1)
+    if entries[i].name == name
+      return entries[i]
+    else
+      i += 1
+       end
+     end
+
+     return nil
+   end
+
    def import_from_csv(file_name)
      # Implementation goes here
      csv_text = File.read(file_name)
