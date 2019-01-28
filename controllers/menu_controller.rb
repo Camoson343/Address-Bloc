@@ -12,7 +12,7 @@ class MenuController
     puts "Main Menu - #{address_book.entries.count} entries"
     puts "1 - View all entries"
     puts "2 - Create an entry"
-    puts "3 - Exterminate"
+    puts "3 - Nuke"
     puts "4 - Search for an entry"
     puts "5 - Import entries from a CSV"
     puts "6 - Exit"
@@ -31,7 +31,8 @@ class MenuController
       main_menu
     when 3
       system "clear"
-      exterminate
+      @address_book.nuke
+      puts "ya done messed up"
       main_menu
     when 4
       system "clear"
@@ -83,11 +84,6 @@ end
   def delete_entry(entry)
     address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
-  end
-
-  def exterminate(entry)
-    address_book.entries.clear
-    puts "boom"
   end
 
   def edit_entry(entry)
